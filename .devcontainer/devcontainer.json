@@ -1,6 +1,6 @@
 {
 	"name": "GitHub secret scanning",
-	"image": "mcr.microsoft.com/vscode/devcontainers/python:0-3.9",
+	"image": "mcr.microsoft.com/vscode/devcontainers/python:0-3.11",
 	"remoteEnv": {
 		"PATH": "/home/vscode/.local/bin:${containerEnv:PATH}" // give our installed Python modules precedence
 	},
@@ -37,6 +37,7 @@
 				"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
 				"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
 				"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
+				"python.analysis.extraPaths": ["api"],
 				"[python]": {
 					"editor.formatOnSave": true
 				},
@@ -46,5 +47,6 @@
 			}
 		}
 	},
+	"postCreateCommand": "cd api && make install && make install-dev",
 	"remoteUser": "vscode"
 }
