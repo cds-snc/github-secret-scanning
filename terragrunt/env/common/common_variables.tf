@@ -1,15 +1,15 @@
 variable "account_id" {
-  description = "(Required) The account ID to perform actions on."
+  description = "The account ID to perform actions on"
   type        = string
 }
 
 variable "cbs_satellite_bucket_name" {
-  description = "(Required) Name of the Cloud Based Sensor S3 satellite bucket"
+  description = "Name of the Cloud Based Sensor S3 satellite bucket"
   type        = string
 }
 
 variable "domain" {
-  description = "(Required) Domain name to deploy to"
+  description = "Domain name of the secret scanning service"
   type        = string
 }
 
@@ -19,12 +19,12 @@ variable "env" {
 }
 
 variable "product_name" {
-  description = "(Required) The name of the product you are deploying."
+  description = "The name of the product you are deploying."
   type        = string
 }
 
 variable "region" {
-  description = "The current AWS region"
+  description = "The AWS region to deploy to"
   type        = string
 }
 
