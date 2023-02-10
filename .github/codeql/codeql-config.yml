@@ -1,0 +1,6 @@
+name: CodeQL configuration
+
+paths:
+  - api
+paths-ignore:
+  - "tests/**"
