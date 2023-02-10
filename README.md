@@ -1,10 +1,3 @@
-# Generic Project Template
+# Github secret scanning alert service :microscope: :warning:
 
-This repository provides some base files for setting up a repository at
-CDS. Plan is to create more project template for specific technologies:
-
-- project-template-terraform
-- project-template-python
-- project-template-nodejs
-
-Note that default community health files are maintained at https://github.com/cds-snc/.github 
+This repo holds the service and infrastructure code for the [Github secret scanning alert service](https://docs.github.com/en/developers/overview/secret-scanning-partner-program#create-a-secret-alert-service).
