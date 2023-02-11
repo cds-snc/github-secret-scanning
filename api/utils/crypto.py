@@ -26,7 +26,7 @@ def get_public_key(key_identifier: str) -> str or None:
         headers={"Authorization": f"token {GITHUB_TOKEN}"},
         timeout=15,
     )
-    public_keys = json.loads(response.text)
+    public_keys = json.loads(response.text, strict=False)
     keys = public_keys.get("public_keys", []) if isinstance(public_keys, dict) else []
 
     if len(keys) == 0:
