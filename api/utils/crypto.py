@@ -18,7 +18,7 @@ GITHUB_PUBLIC_KEYS_URL = get_env_var("GITHUB_PUBLIC_KEYS_URL")
 GITHUB_TOKEN = get_env_var("GITHUB_TOKEN")
 
 
-def get_public_key(key_identifier):
+def get_public_key(key_identifier: str) -> str or None:
     "Get public keys from GitHub"
 
     response = requests.get(
@@ -45,7 +45,7 @@ def get_public_key(key_identifier):
     return None
 
 
-def is_valid_signature(key_id, signature, payload):
+def is_valid_signature(key_id: str, signature: str, payload: str) -> bool:
     "Validate the message signature"
 
     if not key_id or not signature or not payload:
