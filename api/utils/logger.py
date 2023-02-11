@@ -11,4 +11,4 @@ logging.basicConfig(
     level=LOG_LEVEL,
 )
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("api")

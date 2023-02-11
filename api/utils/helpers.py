@@ -32,14 +32,15 @@ def get_public_key(key_identifier):
         timeout=15,
     )
     public_keys = json.loads(response.text)
+    keys = public_keys.get("public_keys", [])
 
-    if not isinstance(public_keys, list) or len(public_keys) == 0:
+    if len(keys) == 0:
         logger.error("No public keys found: %s", public_keys)
         return None
 
-    for public_key in public_keys:
-        if public_key["key_identifier"] == key_identifier:
-            return public_key["key"]
+    for key in keys:
+        if key["key_identifier"] == key_identifier:
+            return key["key"]
 
     logger.error(
         "Public key not found for key ID '%s'.  Keys returned: %s",
