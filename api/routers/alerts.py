@@ -2,7 +2,7 @@
 API routes for the GitHub alerts requests
 """
 from fastapi import APIRouter, Request, Response, status
-from utils.helpers import is_valid_signature
+from utils.crypto import is_valid_signature
 from utils.logger import logger
 
 router = APIRouter()
