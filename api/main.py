@@ -6,8 +6,8 @@ from routers import alerts, ops
 
 
 app = FastAPI(
-    title="API GitHub Secret Scanning",
-    description="API to receive GitHub secret scanning alerts",
+    title="GitHub Secret Scanning Alerts API",
+    description="Receives alerts from GitHub when they detect a secret in a repository",
     version="1.0.0",
 )
 
