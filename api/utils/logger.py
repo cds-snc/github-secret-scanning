@@ -4,10 +4,10 @@ Logging configuration
 import logging
 import os
 
-LOG_LEVEL = os.getenv("LOG_LEVEL", "DEBUG")
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
 
 logging.basicConfig(
-    format='{"time":"%(asctime)s","name":"%(name)s","level":"%(levelname)s","message":"%(message)s"}',  # pylint: disable=line-too-long
+    format='{"time":"%(asctime)s","level":"%(levelname)s","message":"%(message)s"}',
     level=LOG_LEVEL,
 )
 
