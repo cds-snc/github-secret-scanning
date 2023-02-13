@@ -1,5 +1,5 @@
-resource "aws_ssm_parameter" "github_token" {
-  name  = "${var.product_name}-github-token"
+resource "aws_ssm_parameter" "api_config" {
+  name  = "${var.product_name}-config"
   type  = "SecureString"
   value = var.github_token
 

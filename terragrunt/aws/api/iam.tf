@@ -5,7 +5,7 @@ data "aws_iam_policy_document" "api_policies" {
       "ssm:GetParameters",
     ]
     resources = [
-      aws_ssm_parameter.github_token.arn
+      aws_ssm_parameter.api_config.arn
     ]
   }
 }
