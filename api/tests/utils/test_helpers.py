@@ -1,9 +1,9 @@
-from utils import helpers
-
-from unittest.mock import patch
-
+# pylint: disable=missing-docstring,line-too-long
 import os
 import pytest
+
+from unittest.mock import patch
+from utils import helpers
 
 
 @patch.dict(os.environ, {"MUFFINS": "bananana"}, clear=True)

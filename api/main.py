@@ -2,19 +2,12 @@
 Main API entrypoint
 """
 from fastapi import FastAPI
-from dotenv import load_dotenv
-
 from routers import alerts, ops
-from utils.helpers import get_env_var
 
-load_dotenv()
-
-GITHUB_PUBLIC_KEYS_URL = get_env_var("GITHUB_PUBLIC_KEYS_URL")
-GITHUB_TOKEN = get_env_var("GITHUB_TOKEN")
 
 app = FastAPI(
-    title="API GitHub Secret Scanning",
-    description="API to receive GitHub secret scanning alerts",
+    title="GitHub Secret Scanning Alerts API",
+    description="Receives alerts from GitHub when they detect a secret in a repository",
     version="1.0.0",
 )
 
