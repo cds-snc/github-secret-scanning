@@ -37,7 +37,7 @@ resource "aws_cloudfront_distribution" "api" {
 
     target_origin_id           = var.api_function_name
     viewer_protocol_policy     = "redirect-to-https"
-    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy_api.id
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_api.id
     cache_policy_id            = data.aws_cloudfront_cache_policy.managed_caching_optimized.id
     origin_request_policy_id   = data.aws_cloudfront_origin_request_policy.managed_all_viewer.id
   }
@@ -50,7 +50,7 @@ resource "aws_cloudfront_distribution" "api" {
 
     target_origin_id           = var.api_function_name
     viewer_protocol_policy     = "redirect-to-https"
-    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_policy_api.id
+    response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_api.id
     cache_policy_id            = data.aws_cloudfront_cache_policy.managed_caching_disabled.id
     origin_request_policy_id   = data.aws_cloudfront_origin_request_policy.managed_all_viewer.id
   }
@@ -73,7 +73,7 @@ resource "aws_cloudfront_distribution" "api" {
   }
 }
 
-resource "aws_cloudfront_response_headers_policy" "api" {
+resource "aws_cloudfront_response_headers_policy" "security_headers_api" {
   name = "api-cloudfront-headers"
 
   security_headers_config {
