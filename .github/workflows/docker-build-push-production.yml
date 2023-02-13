@@ -1,0 +1,83 @@
+name: Docker build and push
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  GITHUB_SHA: ${{ github.sha }}
+  REGISTRY: 283582579564.dkr.ecr.ca-central-1.amazonaws.com/github-secret-scanning
+  AWS_REGION: ca-central-1
+
+permissions:
+  id-token: write
+  contents: write
+  pull-requests: write
+  actions: write
+  checks: write
+  statuses: write
+  security-events: write
+
+jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      images: ${{ steps.filter.outputs.changes }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
+
+      - uses: dorny/paths-filter@4512585405083f25c027a35db413c2b3b9006d50 # tag=v2.11.1
+        id: filter
+        with:
+          filters: |
+            api: 'api/**'
+
+  build-push:
+    if: needs.changes.outputs.images != '[]'
+    runs-on: ubuntu-latest
+    needs: changes
+    strategy:
+      fail-fast: false
+      matrix:
+        image: ${{ fromJSON(needs.changes.outputs.images) }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@ac593985615ec2ede58e132d2e21d2b1cbd6127c # v3.3.0
+
+      - name: Configure AWS credentials using OIDC
+        uses: aws-actions/configure-aws-credentials@67fbcbb121271f7775d2e7715933280b06314838 # tag=v1.7.0
+        with:
+          role-to-assume: arn:aws:iam::283582579564:role/github-secret-scanning-apply
+          role-session-name: ECRPush
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Build image
+        working-directory: ./${{ matrix.image }}
+        run: |
+          docker build \
+          --build-arg GIT_SHA=$GITHUB_SHA \
+          -t $REGISTRY/${{ matrix.image }}:$GITHUB_SHA \
+          -t $REGISTRY/${{ matrix.image }}:latest .
+
+      - name: Login to ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@261a7de32bda11ba01f4d75c4ed6caf3739e54be # v1.5.3
+
+      - name: Push image to ECR
+        run: |
+          docker push $REGISTRY/${{ matrix.image }}:$GITHUB_SHA
+          docker push $REGISTRY/${{ matrix.image }}:latest
+
+      - name: Docker generate SBOM
+        uses: cds-snc/security-tools/.github/actions/generate-sbom@a38917b147dfc8f086abcf81529e3c12f26529b8 # v2.1.0
+        with:
+          docker_image: "${{ env.REGISTRY }}/${{ matrix.image }}:${{ env.GITHUB_SHA }}"
+          dockerfile_path: "${{ matrix.image }}/Dockerfile"
+          sbom_name: "${{ matrix.image }}"
+          token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Logout of Amazon ECR
+        run: docker logout ${{ steps.login-ecr.outputs.registry }}
