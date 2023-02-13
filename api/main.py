@@ -2,6 +2,7 @@
 Main API entrypoint
 """
 from fastapi import FastAPI
+from mangum import Mangum
 from routers import alerts, ops
 
 
@@ -13,3 +14,5 @@ app = FastAPI(
 
 app.include_router(alerts.router)
 app.include_router(ops.router)
+
+handler = Mangum(app)
