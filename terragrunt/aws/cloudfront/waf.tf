@@ -235,7 +235,7 @@ resource "aws_wafv2_regex_pattern_set" "valid_uri_paths" {
 
   # ops
   regular_expression {
-    regex_string = "^/(healthcheck|version|docs|openapi.json|\\.well-known\\/security\\.txt)$"
+    regex_string = "^/(healthcheck|version|docs|openapi.json|.well-known/security.txt)$"
   }
 
   # alerts
