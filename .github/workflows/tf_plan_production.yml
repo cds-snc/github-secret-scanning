@@ -29,6 +29,7 @@ jobs:
       matrix:
         include:          
           - module: api
+          - module: cloudfront
           - module: hosted_zone
 
     runs-on: ubuntu-latest
