@@ -230,7 +230,7 @@ resource "aws_wafv2_web_acl" "api" {
 resource "aws_wafv2_regex_pattern_set" "valid_uri_paths" {
   provider    = aws.us-east-1
   name        = "valid-api-paths"
-  description = "Regex to match the API's valid paths"
+  description = "Regex to match the API valid paths"
   scope       = "CLOUDFRONT"
 
   # ops
