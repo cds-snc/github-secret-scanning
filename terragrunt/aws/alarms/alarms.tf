@@ -11,8 +11,8 @@ resource "aws_cloudwatch_log_metric_filter" "api_error" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "api_error" {
-  alarm_name          = local.error_logged_api
-  alarm_description   = "Errors logged by the API lambda function"
+  alarm_name          = "GitHub secret scanning: error"
+  alarm_description   = "Error logged by the API lambda function."
   comparison_operator = "GreaterThanOrEqualToThreshold"
 
   metric_name        = aws_cloudwatch_log_metric_filter.api_error.metric_transformation[0].name
@@ -40,8 +40,8 @@ resource "aws_cloudwatch_log_metric_filter" "api_secret_detected" {
 }
 
 resource "aws_cloudwatch_metric_alarm" "api_secret_detected" {
-  alarm_name          = local.secret_detected_api
-  alarm_description   = "GitHub alert that a secret has been detected"
+  alarm_name          = "GitHub secret scanning: secret detected"
+  alarm_description   = "GitHub alert that a secret has been found in a repo."
   comparison_operator = "GreaterThanOrEqualToThreshold"
 
   metric_name        = aws_cloudwatch_log_metric_filter.api_secret_detected.metric_transformation[0].name
