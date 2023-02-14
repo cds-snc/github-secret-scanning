@@ -1,15 +1,3 @@
-data "aws_cloudfront_cache_policy" "managed_caching_optimized" {
-  name = "Managed-CachingOptimized"
-}
-
-data "aws_cloudfront_cache_policy" "managed_caching_disabled" {
-  name = "Managed-CachingDisabled"
-}
-
-data "aws_cloudfront_origin_request_policy" "managed_all_viewer" {
-  name = "Managed-AllViewer"
-}
-
 resource "aws_cloudfront_distribution" "api" {
   enabled     = true
   aliases     = [var.domain]
@@ -34,12 +22,25 @@ resource "aws_cloudfront_distribution" "api" {
     allowed_methods = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods  = ["GET", "HEAD"]
 
+    forwarded_values {
+      query_string = true
+      headers = [
+        "GITHUB-PUBLIC-KEY-IDENTIFIER",
+        "GITHUB-PUBLIC-KEY-SIGNATURE"
+      ]
+      cookies {
+        forward = "none"
+      }
+    }
 
     target_origin_id           = var.api_function_name
     viewer_protocol_policy     = "redirect-to-https"
     response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_api.id
-    cache_policy_id            = data.aws_cloudfront_cache_policy.managed_caching_optimized.id
-    origin_request_policy_id   = data.aws_cloudfront_origin_request_policy.managed_all_viewer.id
+
+    min_ttl     = 1
+    default_ttl = 86400    # 24 hours
+    max_ttl     = 31536000 # 365 days
+    compress    = true
   }
 
   # Prevent caching of healthcheck calls
@@ -48,11 +49,21 @@ resource "aws_cloudfront_distribution" "api" {
     allowed_methods = ["GET", "HEAD"]
     cached_methods  = ["GET", "HEAD"]
 
+    forwarded_values {
+      query_string = false
+      cookies {
+        forward = "none"
+      }
+    }
+
     target_origin_id           = var.api_function_name
     viewer_protocol_policy     = "redirect-to-https"
     response_headers_policy_id = aws_cloudfront_response_headers_policy.security_headers_api.id
-    cache_policy_id            = data.aws_cloudfront_cache_policy.managed_caching_disabled.id
-    origin_request_policy_id   = data.aws_cloudfront_origin_request_policy.managed_all_viewer.id
+
+    min_ttl     = 0
+    default_ttl = 0
+    max_ttl     = 0
+    compress    = true
   }
 
   restrictions {
@@ -85,7 +96,7 @@ resource "aws_cloudfront_response_headers_policy" "security_headers_api" {
       override = true
     }
     content_security_policy {
-      content_security_policy = "report-uri https://csp-report-to.security.cdssandbox.xyz/report; default-src 'none'; script-src 'self'; connect-src 'self'; img-src 'self'; style-src 'self'; frame-ancestors 'self'; form-action 'self';"
+      content_security_policy = "report-uri https://csp-report-to.security.cdssandbox.xyz/report; default-src 'none'; script-src 'self'; script-src-elem https://cdn.jsdelivr.net/npm/swagger-ui-dist@4/ 'sha256-QOOQu4W1oxGqd2nbXbxiA1Di6OHQOLQD+o+G9oWL8YY='; connect-src 'self'; img-src 'self' https://fastapi.tiangolo.com/img/ data: 'unsafe-eval'; style-src 'self'; style-src-elem 'self' https://cdn.jsdelivr.net/npm/swagger-ui-dist@4/; frame-ancestors 'self'; form-action 'self';"
       override                = false
     }
     referrer_policy {
