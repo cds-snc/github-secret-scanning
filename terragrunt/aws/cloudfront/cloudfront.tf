@@ -15,6 +15,11 @@ resource "aws_cloudfront_distribution" "api" {
       origin_protocol_policy = "https-only"
       origin_ssl_protocols   = ["TLSv1.2"]
     }
+
+    custom_header {
+      name  = "X-CloudFront-Header"
+      value = var.cloudfront_header
+    }
   }
 
   # Optimized caching for all GET/HEAD requests
