@@ -8,10 +8,10 @@ variable "api_function_url" {
   type        = string
 }
 
-variable "cloudfront_header" {  
+variable "cloudfront_header" {
   description = "Header that gets added to all origin requests by CloudFront.  The API validates that this header is present and has the expected value."
-  type = string
-  sensitive = true
+  type        = string
+  sensitive   = true
 }
 
 variable "enable_waf" {
