@@ -15,6 +15,7 @@ env:
   TF_VAR_api_config: ${{ secrets.API_CONFIG }}
   TF_VAR_log_analytics_workspace_id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
   TF_VAR_log_analytics_workspace_key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
+  TF_VAR_slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
 
 permissions:
   id-token: write
@@ -50,4 +51,8 @@ jobs:
 
       - name: Apply cloudfront
         working-directory: terragrunt/env/production/cloudfront
+        run: terragrunt apply --terragrunt-non-interactive -auto-approve
+
+      - name: Apply alarms
+        working-directory: terragrunt/env/production/alarms
         run: terragrunt apply --terragrunt-non-interactive -auto-approve
