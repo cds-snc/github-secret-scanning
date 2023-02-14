@@ -75,7 +75,7 @@ jobs:
       - name: Deploy new image
         run: |
           aws lambda update-function-code \
-            --function-name ${{ env.FUNCTION_PREFIX }}-${{ matrix.function }} \
+            --function-name ${{ env.FUNCTION_PREFIX }}-${{ matrix.image }} \
             --image-uri $REGISTRY/${{ matrix.image }}:$GITHUB_SHA  > /dev/null 2>&1
 
       - name: Docker generate SBOM
