@@ -73,7 +73,6 @@ jobs:
           docker push $REGISTRY/${{ matrix.image }}:latest
 
       - name: Deploy new image
-        if: steps.filter.outputs.changes == 'true'
         run: |
           aws lambda update-function-code \
             --function-name ${{ env.FUNCTION_PREFIX }}-${{ matrix.function }} \
