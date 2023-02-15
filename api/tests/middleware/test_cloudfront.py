@@ -18,3 +18,9 @@ def test_check_header_bad_value(client):
 def test_check_header_missing(client):
     response = client.get("/version")
     assert response.status_code == 403
+
+
+@patch("middleware.cloudfront.CLOUDFRONT_HEADER", "localhost")
+def test_check_header_localhost_bypass(client):
+    response = client.get("/version")
+    assert response.status_code == 200
