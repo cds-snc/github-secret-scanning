@@ -9,6 +9,8 @@ from cryptography.exceptions import InvalidSignature
 from cryptography.hazmat.primitives import hashes, serialization
 from cryptography.hazmat.primitives.asymmetric import ec
 from dotenv import load_dotenv
+from requests.adapters import HTTPAdapter, Retry
+from requests.exceptions import HTTPError
 from .helpers import get_env_var
 from .logger import logger
 
@@ -21,26 +23,34 @@ GITHUB_TOKEN = get_env_var("GITHUB_TOKEN")
 def get_public_key(key_identifier: str) -> str or None:
     "Get public keys from GitHub"
 
-    response = requests.get(
-        GITHUB_PUBLIC_KEYS_URL,
-        headers={"Authorization": f"token {GITHUB_TOKEN}"},
-        timeout=15,
-    )
+    # Retry up to 5 times with exponential backoff
+    session = requests.Session()
+    retries = Retry(total=5, backoff_factor=1, status_forcelist=[500, 502, 503, 504])
+    session.mount("http://", HTTPAdapter(max_retries=retries))
+
+    try:
+        response = session.get(
+            GITHUB_PUBLIC_KEYS_URL,
+            headers={"Authorization": f"token {GITHUB_TOKEN}"},
+            timeout=15,
+        )
+        response.raise_for_status()
+    except HTTPError as error:
+        logger.error("Failed to get public keys from GitHub: %s", error)
+        return None
+
     public_keys = json.loads(response.text, strict=False)
     keys = public_keys.get("public_keys", []) if isinstance(public_keys, dict) else []
-
-    if len(keys) == 0:
-        logger.error("No public keys found in response: %s", response.text)
-        return None
 
     for key in keys:
         if key["key_identifier"] == key_identifier:
             return key["key"]
 
     logger.error(
-        "Public key not found for key ID '%s'.  Keys returned: %s",
+        "Public key not found for key ID '%s'. Keys returned: %s. Response text: %s",
         key_identifier,
         public_keys,
+        response.text,
     )
     return None
 

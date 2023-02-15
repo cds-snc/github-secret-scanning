@@ -1,19 +1,36 @@
 # pylint: disable=missing-docstring,line-too-long
 from unittest.mock import patch
+from requests.models import Response
 from utils import crypto
 
 
 @patch("utils.crypto.requests")
 def test_get_public_key(mock_requests):
-    mock_requests.get.return_value.text = '{"public_keys":[{"key_identifier":"42","key":"some key value"},{"key_identifier":"43","key":"another key value"}]}'
+    mock_requests.Session.return_value.get.return_value.text = '{"public_keys":[{"key_identifier":"42","key":"some key value"},{"key_identifier":"43","key":"another key value"}]}'
     assert crypto.get_public_key("42") == "some key value"
     assert crypto.get_public_key("43") == "another key value"
     assert crypto.get_public_key("44") is None
 
 
+@patch("utils.crypto.requests.Session.get")
+def test_get_public_key_4xx_response(mock_get):
+    mock_response = Response()
+    mock_response.status_code = 404
+    mock_get.return_value = mock_response
+    assert crypto.get_public_key("42") is None
+
+
+@patch("utils.crypto.requests.Session.get")
+def test_get_public_key_5xx_response(mock_get):
+    mock_response = Response()
+    mock_response.status_code = 500
+    mock_get.return_value = mock_response
+    assert crypto.get_public_key("42") is None
+
+
 @patch("utils.crypto.requests")
 def test_get_public_key_no_key(mock_requests):
-    mock_requests.get.return_value.text = '{"public_keys":[]}'
+    mock_requests.Session.return_value.get.return_value.text = '{"public_keys":[]}'
     assert crypto.get_public_key("42") is None
 
 
