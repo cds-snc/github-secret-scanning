@@ -79,7 +79,7 @@ jobs:
             --image-uri $REGISTRY/${{ matrix.image }}:$GITHUB_SHA  > /dev/null 2>&1
 
       - name: Docker generate SBOM
-        uses: cds-snc/security-tools/.github/actions/generate-sbom@a38917b147dfc8f086abcf81529e3c12f26529b8 # v2.1.0
+        uses: cds-snc/security-tools/.github/actions/generate-sbom@cfec0943e40dbb78cee115bbbe89dc17f07b7a0f # v2.1.3
         with:
           docker_image: "${{ env.REGISTRY }}/${{ matrix.image }}:${{ env.GITHUB_SHA }}"
           dockerfile_path: "${{ matrix.image }}/Dockerfile"
