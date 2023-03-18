@@ -1,4 +1,4 @@
-ARG BASE_IMAGE="python:3.11.2-alpine3.16@sha256:032d0f47ebb7be65eefc6f3a112f6558a3f9695e77c202898878ad8ad3104c0c"
+ARG BASE_IMAGE="python:3.11.2-alpine3.16@sha256:cb6c704d0d1f386a5c427a9ebd6fcce3978046b97c7caabf568e4dc241aafe1a"
 FROM ${BASE_IMAGE} as builder
 
 ARG RIE_VERSION="v1.10"
