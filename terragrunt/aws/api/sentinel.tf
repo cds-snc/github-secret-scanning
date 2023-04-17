@@ -1,6 +1,6 @@
 locals {
-  api_log_group_name           = "/aws/lambda/${module.api.function_name}"
-  api_log_group_arn            = "arn:aws:logs:${var.region}:${var.account_id}:log-group:${local.api_log_group_name}"
+  api_log_group_name = "/aws/lambda/${module.api.function_name}"
+  api_log_group_arn  = "arn:aws:logs:${var.region}:${var.account_id}:log-group:${local.api_log_group_name}"
 }
 
 module "sentinel_forwarder" {
