@@ -29,7 +29,7 @@ resource "aws_cloudwatch_metric_alarm" "api_error" {
 
 resource "aws_cloudwatch_log_metric_filter" "api_secret_detected" {
   name           = local.secret_detected_api
-  pattern        = "\"Secret detected\" -revoked"
+  pattern        = "\"Secret detected\" -\"dsp-testing\""
   log_group_name = local.api_cloudwatch_log_group
 
   metric_transformation {
