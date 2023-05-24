@@ -1,5 +1,5 @@
 resource "aws_cloudwatch_query_definition" "api_errors" {
-  name = "GitHub Secrets: Errors"
+  name = "GitHub Secrets - Errors"
 
   log_group_names = [
     local.api_cloudwatch_log_group
@@ -14,7 +14,7 @@ resource "aws_cloudwatch_query_definition" "api_errors" {
 }
 
 resource "aws_cloudwatch_query_definition" "api_secret_detected" {
-  name = "GitHub Secrets: Secret detected"
+  name = "GitHub Secrets - Secret detected"
 
   log_group_names = [
     local.api_cloudwatch_log_group
