@@ -29,7 +29,7 @@ resource "aws_cloudwatch_metric_alarm" "api_error" {
 
 resource "aws_cloudwatch_log_metric_filter" "api_secret_detected" {
   name           = local.secret_detected_api
-  pattern        = "Secret detected"
+  pattern        = "\"Secret detected\" -revoked"
   log_group_name = local.api_cloudwatch_log_group
 
   metric_transformation {
@@ -53,5 +53,4 @@ resource "aws_cloudwatch_metric_alarm" "api_secret_detected" {
   treat_missing_data = "notBreaching"
 
   alarm_actions = [local.sns_topic_arn]
-  ok_actions    = [local.sns_topic_arn]
 }
