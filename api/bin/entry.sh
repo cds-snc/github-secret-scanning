@@ -33,7 +33,7 @@ load_non_existing_envs() {
   done < $TMP_ENV_FILE
 }
 
-echo "Retrieving environment parameters"
+echo "INFO Retrieving environment parameters"
 if [ ! -f "$ENV_PATH/.env" ]; then
     if [ ! -d "$ENV_PATH" ]; then
         mkdir "$ENV_PATH"
@@ -45,7 +45,14 @@ if [ ! -f "$ENV_PATH/.env" ]; then
         --query 'Parameters[*].Value' \
         --output text > "$TMP_ENV_FILE"
 fi
+
+# Check if environment vars were retrieved
+if [ ! -s "$TMP_ENV_FILE" ]; then
+    echo "ERROR Failed to retrieve env vars during init"
+    rm "$TMP_ENV_FILE"
+    exit 1
+fi
 load_non_existing_envs
 
-echo "Starting lambda handler"
+echo "INFO Starting lambda handler"
 exec /usr/local/bin/python -m awslambdaric "$1"
