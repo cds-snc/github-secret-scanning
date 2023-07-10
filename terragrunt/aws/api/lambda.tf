@@ -1,5 +1,5 @@
 module "api" {
-  source    = "github.com/cds-snc/terraform-modules?ref=v5.0.0//lambda"
+  source    = "github.com/cds-snc/terraform-modules?ref=v6.1.1//lambda"
   name      = "${var.product_name}-api"
   ecr_arn   = aws_ecr_repository.api.arn
   image_uri = "${aws_ecr_repository.api.repository_url}:latest"
