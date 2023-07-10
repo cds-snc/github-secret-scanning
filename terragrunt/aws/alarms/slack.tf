@@ -1,5 +1,5 @@
 module "cloudwatch_alarms_slack" {
-  source = "github.com/cds-snc/terraform-modules?ref=v5.0.2//notify_slack"
+  source = "github.com/cds-snc/terraform-modules?ref=v5.1.11"
 
   function_name     = "${var.product_name}-notify-slack"
   project_name      = var.product_name
