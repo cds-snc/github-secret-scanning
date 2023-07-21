@@ -23,8 +23,8 @@ resource "aws_cloudwatch_metric_alarm" "api_error" {
   threshold          = "1"
   treat_missing_data = "notBreaching"
 
-  alarm_actions = [local.sns_topic_arn]
-  ok_actions    = [local.sns_topic_arn]
+  alarm_actions = [aws_sns_topic.cloudwatch_alarm.arn]
+  ok_actions    = [aws_sns_topic.cloudwatch_alarm.arn]
 }
 
 resource "aws_cloudwatch_log_metric_filter" "api_secret_detected" {
@@ -52,5 +52,5 @@ resource "aws_cloudwatch_metric_alarm" "api_secret_detected" {
   threshold          = "1"
   treat_missing_data = "notBreaching"
 
-  alarm_actions = [local.sns_topic_arn]
+  alarm_actions = [aws_sns_topic.cloudwatch_alarm.arn]
 }
