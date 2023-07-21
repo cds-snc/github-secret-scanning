@@ -6,7 +6,8 @@ resource "aws_sns_topic" "cloudwatch_alarm" {
   kms_master_key_id = aws_kms_key.sns_cloudwatch.id
 
   tags = {
-    (var.billing_tag_key) = var.billing_tag_value
+    CostCentre = var.billing_code
+    Terraform  = true
   }
 }
 
@@ -28,7 +29,8 @@ resource "aws_kms_key" "sns_cloudwatch" {
   policy      = data.aws_iam_policy_document.sns_cloudwatch.json
 
   tags = {
-    (var.billing_tag_key) = var.billing_tag_value
+    CostCentre = var.billing_code
+    Terraform  = true
   }
 }
 
