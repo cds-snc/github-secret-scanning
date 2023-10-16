@@ -8,3 +8,10 @@ variable "slack_webhook_url" {
   type        = string
   sensitive   = true
 }
+
+variable "opsgenie_alarm_webhook_url" {
+  description = "The URL of the opsgenie webhook."
+  type        = string
+  sensitive   = true
+}
+

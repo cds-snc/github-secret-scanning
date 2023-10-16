@@ -20,6 +20,15 @@ resource "aws_sns_topic_subscription" "cloudwatch_alarm" {
   endpoint  = var.slack_webhook_url
 }
 
+# SNS subscription for OpsGenie
+resource "aws_sns_topic_subscription" "alert_to_sns_to_opsgenie" {
+  topic_arn              = aws_sns_topic.cloudwatch_alarm.arn
+  protocol               = "https"
+  endpoint               = var.opsgenie_alarm_webhook_url
+  raw_message_delivery   = false
+  endpoint_auto_confirms = true
+}
+
 #
 # KMS: SNS topic encryption keys
 #

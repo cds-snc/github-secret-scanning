@@ -17,6 +17,7 @@ env:
   TF_VAR_log_analytics_workspace_id: ${{ secrets.LOG_ANALYTICS_WORKSPACE_ID }}
   TF_VAR_log_analytics_workspace_key: ${{ secrets.LOG_ANALYTICS_WORKSPACE_KEY }}
   TF_VAR_slack_webhook_url: ${{ secrets.SLACK_WEBHOOK_URL }}
+  TF_VAR_opsgenie_alarm_webhook_url: ${{ secrets.OPSGENIE_ALARM_WEBHOOK_URL }}
 
 permissions:
   id-token: write
