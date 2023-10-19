@@ -20,6 +20,7 @@ resource "aws_lambda_function" "broadcast_alert" {
   handler       = "broadcast_alert.lambda_handler"
   runtime       = "python3.9"
   timeout       = 60
+  reserved_concurrent_executions = 10
 
   filename         = data.archive_file.broadcast_alert.output_path
   source_code_hash = filebase64sha256(data.archive_file.broadcast_alert.output_path)

@@ -1,8 +1,10 @@
 skip-check:
   - CKV_AWS_51 # ECR: `latest` tag is used for development
   - CKV_AWS_86 # CloudFront: access logging not required
+  - CKV_AWS_116 # Lambda dead-letter queue not required
   - CKV_AWS_117 # Lambda: access to VPC resources not required
   - CKV_AWS_136 # ECR: default encryption key is acceptable
   - CKV_AWS_158 # CloudWatch: default encryption key is acceptable
+  - CKV_AWS_173 # Lambda env var default service key encryption is acceptable
   - CKV_AWS_192 # CloudFront: false-positive, AWSManagedRulesKnownBadInputsRuleSet is being applied
   - CKV2_AWS_32 # CloudFront: false-positive, strict header security policy is being applied
