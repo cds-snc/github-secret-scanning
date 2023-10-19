@@ -42,7 +42,7 @@ resource "aws_lambda_function" "broadcast_alert" {
 # Permission that allows the Cloudwatch service to execute the Lambda function
 resource "aws_lambda_permission" "broadcast_alert_lambda_permission" {
   action        = "lambda:InvokeFunction"
-  principal     = "logs.ca-central-1.amazonaws.com"
+  principal     = "logs.${var.region}.amazonaws.com"
   function_name = aws_lambda_function.broadcast_alert.arn
   source_arn    = "${local.target_log_group_arn}:*"
 }
