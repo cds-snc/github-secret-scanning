@@ -36,6 +36,7 @@ jobs:
           - module: api
           - module: cloudfront
           - module: hosted_zone
+          - module: alert_compromise 
 
     runs-on: ubuntu-latest
     steps:

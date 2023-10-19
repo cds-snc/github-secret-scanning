@@ -57,3 +57,7 @@ jobs:
       - name: Apply alarms
         working-directory: terragrunt/env/production/alarms
         run: terragrunt apply --terragrunt-non-interactive -auto-approve
+
+      - name: Apply alert compromise 
+        working-directory: terragrunt/env/production/alert_compromise
+        run: terragrunt apply --terragrunt-non-interactive -auto-approve
