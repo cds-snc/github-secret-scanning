@@ -51,7 +51,7 @@ resource "aws_lambda_permission" "broadcast_alert_lambda_permission" {
 # filter pattern of "Secret detected" and sends it to the Lambda function
 resource "aws_cloudwatch_log_subscription_filter" "broadcast_alert_lambda_logfilter" {
   name            = "broadcast_alert_lambda_logfilter"
-  depends_on      = ["aws_lambda_permission.broadcast_alert_lambda_permission"]
+  depends_on      = [aws_lambda_permission.broadcast_alert_lambda_permission]
   log_group_name  = local.target_log_group_name
   filter_pattern  = "Secret detected"
   destination_arn = aws_lambda_function.broadcast_alert.arn
