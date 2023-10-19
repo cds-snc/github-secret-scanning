@@ -14,12 +14,12 @@ data "archive_file" "broadcast_alert" {
 
 # Lambda function that will broadcast the alert to the SNS topic
 resource "aws_lambda_function" "broadcast_alert" {
-  function_name = var.function_name
-  description   = "Notify other teams that their API keys have been compromised."
-  role          = aws_iam_role.group_broadcast_alert_role.arn
-  handler       = "broadcast_alert.lambda_handler"
-  runtime       = "python3.9"
-  timeout       = 60
+  function_name                  = var.function_name
+  description                    = "Notify other teams that their API keys have been compromised."
+  role                           = aws_iam_role.group_broadcast_alert_role.arn
+  handler                        = "broadcast_alert.lambda_handler"
+  runtime                        = "python3.9"
+  timeout                        = 60
   reserved_concurrent_executions = 10
 
   filename         = data.archive_file.broadcast_alert.output_path
