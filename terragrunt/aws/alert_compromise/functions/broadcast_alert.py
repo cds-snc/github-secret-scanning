@@ -21,7 +21,7 @@ def lambda_handler(event, context):
     decoded_event = json.loads(gzip.decompress(base64.b64decode(event['awslogs']['data'])))
     message = decoded_event['logEvents'][0]['message']
     # Double check that the message received contains a secret
-    if ("Secret detected:" in message ):
+    if ("Secret detected:" in message) and ("gcntfy-api-key-blah-00000000-0000-0000-0000-000000000000-00000000-0000-0000-0000-000000000000" not in message):
         message_array = re.split("\s", message)
         for element in message_array:
             # Retrieve the api_key and the github_repo from the message
