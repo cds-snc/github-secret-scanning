@@ -27,9 +27,13 @@ def lambda_handler(event, context):
             # Retrieve the api_key and the github_repo from the message
             if "token=" in element: 
                 token = element
-            if "url=" in element:
+            elif "url=" in element:
                 github_repo = element
-        body = f"API Key with value {token} has been detected in {github_repo}! This key needs to be revoked."
+	    elif "type=" in element:
+		type = element
+	    elif "source=" in element:
+		source = element 
+        body = f"API Key with value {token}, {type} and {source} has been detected in {github_repo}!"
         # Publish the alert to the SNS topic 
         boto3.client('sns').publish(
             TargetArn = os.environ['sns_topic_arn'],
