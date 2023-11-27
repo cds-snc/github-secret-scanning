@@ -27,7 +27,7 @@ def lambda_handler(event, context):
     print("Starting...")
     # Double check that the message received contains a secret
     if ("Secret detected:" in message and "dsp-testing" not in message):
-        print("Secret has been tetected!")
+        print("Secret has been detected!")
         message_array = re.split("\s", message)
         for element in message_array:
             # Retrieve the api_key and the github_repo from the message
