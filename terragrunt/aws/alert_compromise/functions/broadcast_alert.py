@@ -10,7 +10,8 @@ import re
 
 def lambda_handler(event, context):
     """
-    This function is triggered by a CloudWatch Logs subscription filter and sends an alert to an SNS topic if a secret is detected in the logs.
+    This function is triggered by a CloudWatch Logs subscription filter and
+    sends an alert to an SNS topic if a secret is detected in the logs.
 
     Args:
         event (dict): The event data passed by AWS Lambda.
@@ -19,16 +20,21 @@ def lambda_handler(event, context):
     Returns:
         None
     """
-    decoded_event = json.loads(gzip.decompress(
-        base64.b64decode(event['awslogs']['data'])))
-    message = decoded_event['logEvents'][0]['message']
+    decoded_event = json.loads(
+        gzip.decompress(base64.b64decode(event["awslogs"]["data"]))
+    )
+    message = decoded_event["logEvents"][0]["message"]
 
+    # List of items to ignore as these are from GitHub testing
+    ignore_terms = ["dsp-testing", "example.com", "gcntfy-github-test-revoked"]
 
     print("Starting...")
     # Double check that the message received contains a secret
-    if ("Secret detected:" in message and "dsp-testing" not in message):
+    if "Secret detected:" in message and not any(
+        term in message for term in ignore_terms
+    ):
         print("Secret has been detected!")
-        message_array = re.split("\s", message)
+        message_array = re.split(r"\s", message)
         for element in message_array:
             # Retrieve the api_key and the github_repo from the message
             if "token=" in element:
@@ -39,12 +45,12 @@ def lambda_handler(event, context):
                 type = element
             elif "source=" in element:
                 source = element
-        body = f"API Key with value {token}, {type} and {source} has been detected in {github_repo}!"
+        body = f"API Key with value {token}, {type} and {source} has been detected in {github_repo}!"  # noqa: E501
         # Publish the alert to the SNS topic
         print("Publishing to SNS topic")
-        boto3.client('sns').publish(
-            TargetArn=os.environ['sns_topic_arn'],
+        boto3.client("sns").publish(
+            TargetArn=os.environ["sns_topic_arn"],
             Message=body,
-            Subject=os.environ['subject']
+            Subject=os.environ["subject"],
         )
         print("Done...")
