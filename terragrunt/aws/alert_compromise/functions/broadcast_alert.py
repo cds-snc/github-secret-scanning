@@ -28,6 +28,12 @@ def lambda_handler(event, context):
     # List of items to ignore as these are from GitHub testing
     ignore_terms = ["dsp-testing", "example.com", "gcntfy-github-test-revoked"]
 
+    # get the notify_api_key from the environment variable
+    notify_test_api_key = os.environ["notify_test_api_key"]
+
+    # Add the notify_api_key to the ignore_terms list
+    ignore_terms.append(notify_test_api_key)
+
     print("Starting...")
     # Double check that the message received contains a secret
     if "Secret detected:" in message and not any(
