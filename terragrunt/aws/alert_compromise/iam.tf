@@ -45,10 +45,15 @@ resource "aws_iam_policy" "ssm_get_parameters_policy" {
 
   policy = jsonencode({
     Version = "2012-10-17",
-    Statement = [{
-      Action   = "ssm:GetParameters",
-      Effect   = "Allow",
-      Resource = "arn:aws:ssm:${var.region}:${var.account_id}:parameter/notify_test_api_key"
-    }]
+    Statement = [
+      {
+        Action = [
+          "ssm:GetParameters"
+        ]
+        Sid      = "AllowSSMGetParameters",
+        Effect   = "Allow",
+        Resource = "arn:aws:ssm:${var.region}:${var.account_id}:parameter/notify_test_api_key"
+      }
+    ]
   })
 }
