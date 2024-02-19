@@ -39,8 +39,8 @@ resource "aws_iam_role_policy" "publish_to_sns" {
 
 # IAM Policy for Lambda Function to get SSM Parameters
 resource "aws_iam_role_policy" "ssm_get_parameters_policy" {
-  name        = "ssm_get_parameters_policy"
-  role        = aws_iam_role.group_broadcast_alert_role.id
+  name = "ssm_get_parameters_policy"
+  role = aws_iam_role.group_broadcast_alert_role.id
 
   policy = jsonencode({
     Version = "2012-10-17",
