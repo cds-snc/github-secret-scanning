@@ -8,7 +8,12 @@ from broadcast_alert import lambda_handler
 @mock.patch("broadcast_alert.gzip")
 @mock.patch("broadcast_alert.base64")
 @mock.patch(
-    "os.environ", {"sns_topic_arn": "fake_topic_arn", "subject": "Fake Subject", "notify_test_api_key": "gcntfy-some-test-key-11111"}
+    "os.environ",
+    {
+        "sns_topic_arn": "fake_topic_arn",
+        "subject": "Fake Subject",
+        "notify_test_api_key": "gcntfy-notify-test-key-11111",
+    },
 )
 def test_lambda_handler_secret_detected(
     mock_base64, mock_gzip, mock_json_loads, mock_boto3_client
@@ -36,7 +41,12 @@ def test_lambda_handler_secret_detected(
 @mock.patch("broadcast_alert.gzip")
 @mock.patch("broadcast_alert.base64")
 @mock.patch(
-    "os.environ", {"sns_topic_arn": "fake_topic_arn", "subject": "Fake Subject", "notify_test_api_key": "gcntfy-some-test-key-11111"}
+    "os.environ",
+    {
+        "sns_topic_arn": "fake_topic_arn",
+        "subject": "Fake Subject",
+        "notify_test_api_key": "gcntfy-notify-test-key-11111",
+    },
 )
 @pytest.mark.parametrize(
     "message",
@@ -44,7 +54,7 @@ def test_lambda_handler_secret_detected(
         "Secret detected: token='gcntfy-some-test-key-00000' type='cds_canada_notify_api_key' url='https://example.com/cds-snc/some-repo' source='commit'",
         "Secret detected: token='gcntfy-some-test-key-00000' type='cds_canada_notify_api_key' url='https://github.com/dsp-testing/some-repo' source='commit'",
         "Secret detected: token='gcntfy-github-test-revoked' type='cds_canada_notify_api_key' url='https://example.com/cds-snc/some-repo' source='commit'",
-        "Secret detected: token='gcntfy-some-test-key-11111' type='cds_canada_notify_api_key' url='https://whatever.com/cds-snc/some-repo' source='commit'"
+        "Secret detected: token='gcntfy-notify-test-key-11111' type='cds_canada_notify_api_key' url='https://whatever.com/cds-snc/some-repo' source='commit'",
     ],
 )
 def test_lambda_handler_secret_ignored(
