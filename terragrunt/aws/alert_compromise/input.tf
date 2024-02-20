@@ -31,7 +31,7 @@ variable "api_function_name" {
   type        = string
 }
 
-variable "notify_test_api_key" {
+variable "notify_doc_api_key" {
   description = "The Notify API test key that we can be used for testing."
   type        = string
   sensitive   = true

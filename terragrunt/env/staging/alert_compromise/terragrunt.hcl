@@ -18,7 +18,7 @@ dependency "api" {
 
 inputs = {
   api_function_name     = dependency.api.outputs.function_name
-  notify_test_api_key  = "test-api-key"
+  notify_doc_api_key  = "test-api-key"
 }  
 
 include {

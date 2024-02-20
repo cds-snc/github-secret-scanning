@@ -51,7 +51,7 @@ resource "aws_iam_role_policy" "ssm_get_parameters_policy" {
         ]
         Sid      = "AllowSSMGetParameters",
         Effect   = "Allow",
-        Resource = "arn:aws:ssm:${var.region}:${var.account_id}:parameter/notify_test_api_key"
+        Resource = "arn:aws:ssm:${var.region}:${var.account_id}:parameter/notify_doc_api_key"
       }
     ]
   })

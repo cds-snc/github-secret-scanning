@@ -30,9 +30,9 @@ resource "aws_lambda_function" "broadcast_alert" {
   }
   environment {
     variables = {
-      sns_topic_arn       = "arn:aws:sns:${var.region}:${var.account_id}:${var.sns_topic}"
-      subject             = var.subject_message
-      notify_test_api_key = var.notify_test_api_key
+      sns_topic_arn      = "arn:aws:sns:${var.region}:${var.account_id}:${var.sns_topic}"
+      subject            = var.subject_message
+      notify_doc_api_key = var.notify_doc_api_key
     }
   }
   depends_on = [

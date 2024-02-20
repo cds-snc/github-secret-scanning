@@ -12,7 +12,7 @@ from broadcast_alert import lambda_handler
     {
         "sns_topic_arn": "fake_topic_arn",
         "subject": "Fake Subject",
-        "notify_test_api_key": "gcntfy-notify-test-key-11111",
+        "notify_doc_api_key": "gcntfy-notify-test-key-11111",
     },
 )
 def test_lambda_handler_secret_detected(
@@ -45,7 +45,7 @@ def test_lambda_handler_secret_detected(
     {
         "sns_topic_arn": "fake_topic_arn",
         "subject": "Fake Subject",
-        "notify_test_api_key": "gcntfy-notify-test-key-11111",
+        "notify_doc_api_key": "gcntfy-notify-test-key-11111",
     },
 )
 @pytest.mark.parametrize(
