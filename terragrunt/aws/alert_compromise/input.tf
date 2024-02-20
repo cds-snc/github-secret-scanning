@@ -30,3 +30,9 @@ variable "api_function_name" {
   description = "The name of the api lambda function"
   type        = string
 }
+
+variable "notify_doc_api_key" {
+  description = "The Notify API test key that we can be used for testing."
+  type        = string
+  sensitive   = true
+}
