@@ -26,7 +26,12 @@ def lambda_handler(event, context):
     message = decoded_event["logEvents"][0]["message"]
 
     # List of items to ignore as these are from GitHub testing
-    ignore_terms = ["dsp-testing", "example.com", "gcntfy-github-test-revoked"]
+    ignore_terms = [
+        "dsp-testing",
+        "example.com",
+        "gcntfy-github-test-revoked",
+        "cds-snc/notification-documentation",
+    ]
 
     # get the notify_api_key from the environment variable
     notify_test_api_key = os.environ["notify_test_api_key"]
