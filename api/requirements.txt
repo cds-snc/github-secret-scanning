@@ -3,4 +3,4 @@ fastapi==0.110.0
 mangum==0.17.0
 python-dotenv==1.0.1
 requests==2.31.0
-urllib3<2 # Boto currently does not support urllib3 v2
+urllib3<3 # Boto currently does not support urllib3 v2
