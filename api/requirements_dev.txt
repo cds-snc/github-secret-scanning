@@ -1,4 +1,4 @@
-black==23.12.1
+black==24.2.0
 coverage==7.4.3
 flake8==7.0.0
 httpx==0.27.0
