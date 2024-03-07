@@ -1,6 +1,7 @@
 """
 API routes for operation requests
 """
+
 from os import environ
 from fastapi import APIRouter
 from fastapi.responses import PlainTextResponse
