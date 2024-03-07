@@ -3,6 +3,7 @@ Middleware to validate that the CloudFront header is present
 on the request.  This is to ensure that the API is not
 directly accessible through the Lambda function URL.
 """
+
 from os import environ
 from fastapi import Request
 from fastapi.responses import JSONResponse

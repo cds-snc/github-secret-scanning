@@ -1,6 +1,7 @@
 """
 Cryptography functions used to validate the GitHub request signature.
 """
+
 import base64
 import json
 import requests

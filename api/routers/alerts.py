@@ -1,6 +1,7 @@
 """
 API routes for the GitHub alerts requests
 """
+
 from typing import List
 from fastapi import APIRouter, Request, Response, status
 from models.Alert import Alert

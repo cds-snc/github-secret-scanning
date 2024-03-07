@@ -1,6 +1,7 @@
 """
 Main API entrypoint
 """
+
 from fastapi import FastAPI
 from mangum import Mangum
 from starlette.middleware.base import BaseHTTPMiddleware
