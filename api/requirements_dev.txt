@@ -1,5 +1,5 @@
 black==24.3.0
-coverage==7.4.3
+coverage==7.4.4
 flake8==7.0.0
 httpx==0.27.0
 pytest==8.1.1
