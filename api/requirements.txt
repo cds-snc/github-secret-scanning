@@ -2,5 +2,5 @@ cryptography==42.0.7
 fastapi==0.111.0
 mangum==0.17.0
 python-dotenv==1.0.1
-requests==2.32.2
+requests==2.32.3
 urllib3<2 # Boto currently does not support urllib3 2+
