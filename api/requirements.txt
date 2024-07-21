@@ -1,5 +1,5 @@
 cryptography==42.0.8
-fastapi==0.111.0
+fastapi==0.111.1
 mangum==0.17.0
 python-dotenv==1.0.1
 requests==2.32.3
