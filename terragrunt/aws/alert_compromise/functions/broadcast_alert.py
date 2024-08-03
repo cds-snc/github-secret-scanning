@@ -30,6 +30,7 @@ def lambda_handler(event, context):
         "example.com",
         "gcntfy-github-test-revoked",
         "cds-snc/notification-documentation",
+        "dry-runs-test",
     ]
 
     # get the notify_api_key from the environment variable
