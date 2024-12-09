@@ -46,7 +46,8 @@ def test_alert_valid_signature(mock_logger, mock_is_valid_signature, client):
 def test_alert_invalid_signature(mock_is_valid_signature, client):
     mock_is_valid_signature.return_value = False
     response = client.post(
-        "/alert", json=[{"token":"foo","type":"bar","url":"bam","source":"baz"}]  # noqa: E231
+        "/alert",
+        json=[{"token": "foo", "type": "bar", "url": "bam", "source": "baz"}],
     )
     assert response.status_code == status.HTTP_400_BAD_REQUEST
     assert response.json() == {
