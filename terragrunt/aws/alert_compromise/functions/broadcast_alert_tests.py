@@ -138,7 +138,7 @@ def test_lambda_handler_secret_detected_multiple_secrets(
 @pytest.mark.parametrize(
     "message",
     [
-        "Secret detected: token='gcntfy-some-test-key-000000' type='cds_canada_notify_api_key' url='https://example.com/cds-snc/some-repo' source='commit'",
+        "Secret detected: token='gcntfy-some-test-key-00000' type='cds_canada_notify_api_key' url='https://example.com/cds-snc/some-repo' source='commit'",
         "Secret detected: token='gcntfy-some-test-key-00000' type='cds_canada_notify_api_key' url='https://github.com/dsp-testing/some-repo' source='commit'",
         "Secret detected: token='gcntfy-some-test-key-00000' type='cds_canada_notify_api_key' url='https://github.com/cds-snc/notification-documentation' source='commit'",
         "Secret detected: token='gcntfy-github-test-revoked' type='cds_canada_notify_api_key' url='https://example.com/cds-snc/some-repo' source='commit'",
