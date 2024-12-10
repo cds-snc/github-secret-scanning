@@ -60,6 +60,12 @@ def lambda_handler(event, context):
                     type = element
                 elif "source=" in element:
                     source = element
+
+            # Check if the token contains all zeros
+            if token and does_key_contain_all_zeros(token):
+                print("Key ignored as it contains all zeros.")
+                continue
+
             body = f"API Key with value {token}, {type} and {source} has been detected in {github_repo}!"  # noqa: E501
             # Publish the alert to the SNS topic
             print("Publishing to SNS topic")
@@ -70,3 +76,14 @@ def lambda_handler(event, context):
             )
             print("Alert published for one event...")
     print("Done processing all events...")
+
+
+def does_key_contain_all_zeros(key):
+    # Split the key by the delimiter (e.g., '-')
+    parts = key.split('-')[-5:]
+
+    # Check if all parts that are numeric are zeros
+    if all(part.isdigit() and part == '0' * len(part) for part in parts if part.isdigit()):
+        return True
+    else:
+        return False
