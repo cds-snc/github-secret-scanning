@@ -83,7 +83,4 @@ def does_key_contain_all_zeros(key):
     parts = key.split('-')[-5:]
 
     # Check if all parts that are numeric are zeros
-    if all(part.isdigit() and part == '0' * len(part) for part in parts if part.isdigit()):
-        return True
-    else:
-        return False
+    return all(part == '0' * len(part) for part in parts if part.isdigit())
