@@ -4,17 +4,7 @@
 provider "registry.terraform.io/hashicorp/archive" {
   version = "2.7.0"
   hashes = [
-    "h1:1niS9AcwxN8CrWemnJS2Xf6vM72+48Xh3xFSS3DFWQo=",
-    "h1:CLNMmC2lKCsw3GQo6+LmAzt2QZxPkqL94HdLY3bo56o=",
-    "h1:GFjQfj4CIwi70g/U7cKe8JbGt85xN8GF2hvDWr+Yp7Q=",
-    "h1:MglaZn7VBh3b4soIFhEjLS6eKiXOZpBCu4vVJeniLNw=",
-    "h1:NWOFgWoWBk/QIm1CQytabQaTohHMGFJgrSdMhKY5ayg=",
-    "h1:YkXq4JfcoAW0L4B9ghskZUxYbYAXIPlfSqqVFrAS06U=",
     "h1:aTsKLhA0m6ZW560baooNkF1t47TZvpBvaoPEI8wQpDo=",
-    "h1:dxVYmQ9NOZRFDSkowW3TQ1Rg9AzzECUE7AArxXgZIwY=",
-    "h1:nSzmo+PAu7QJ5nSHb1dCI86z74kn3FFD4p7c7vxv7sk=",
-    "h1:uZO0XsK1RW1mBRn8SsVPXT76pSSbyb4SmA0eLJsOe38=",
-    "h1:vEhMHeBeIPSrN3KNF9I0GWW+lbVBsG1yPkMBsUO1sqk=",
     "zh:04e23bebca7f665a19a032343aeecd230028a3822e546e6f618f24c47ff87f67",
     "zh:5bb38114238e25c45bf85f5c9f627a2d0c4b98fe44a0837e37d48574385f8dad",
     "zh:64584bc1db4c390abd81c76de438d93acf967c8a33e9b923d68da6ed749d55bd",
@@ -35,19 +25,6 @@ provider "registry.terraform.io/hashicorp/aws" {
   constraints = ">= 3.46.0, ~> 5.0"
   hashes = [
     "h1:18BGTHTABfTZdeKcn4181ZZGVxTWt1mP52f6TZ9E0hQ=",
-    "h1:1eJZflctj/VAs7mOPX1fuYnbmLdBLqPmujslS7MtFT0=",
-    "h1:CoClngJwlBgiMsnU5UNvfMwJf1SR322SP/UOgHKbs5c=",
-    "h1:K4Oa/j24gV1fj2OpUqZc283LSYOlldvR1XgXfoxqvrs=",
-    "h1:MCIXfuM4aLJ23One7Y0G7as/uLaJdv2wlbyZL3SE394=",
-    "h1:Oi6A0fLmCf00yMhtYZFJrgpKtRFQ0xvZlptUy/hQAG8=",
-    "h1:QOK0Baeu3c57EaZiiUFSyorfqahJYJ9MC0M/VIX3nG4=",
-    "h1:QoaMIno0eK2BG3V46kUFycib/OIQ/oP47vC5Up4djOg=",
-    "h1:b0NCpDGzk1y2tkFbt3M9O14I+ffkpLHsD+SUUhfakpc=",
-    "h1:bZ3AM8Qd1veQoUJqOb7OVp/ElmLg/hkz3bHL2DZZ5Tk=",
-    "h1:cOfglXs4QiSbQvzVUZC/HhEtg7uOVdn5SLVnAot9iGs=",
-    "h1:fq5H3j1vBUm9r4xKJV8gUedj38J7Wu9XbszEvBnitoM=",
-    "h1:rqkcSC4Ou2D7QZTrm/VU+71Ulqqwp8mU9jx3FVYnMCo=",
-    "h1:st8Be2FWnZaCUNYBnpMZUl0E/cy//su5BU9uf1bHl6s=",
     "zh:03ee14261b25aee94c735ed6ef7cce47900ab7bdf462335432ca034d0ba74ca2",
     "zh:32a3759049c9c2cd041d1257cf16cb90a5ce586e1d0a6fe5f8ebd0ec1ba8e071",
     "zh:334db69bc6d8643ec4ea432f0e54e851c2394bbe889cca29ca5029db0e4699e8",
