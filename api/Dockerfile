@@ -1,4 +1,4 @@
-ARG BASE_IMAGE="python:3.11.2-alpine3.16@sha256:beae3986f2c26f415a02664d03e2a7780ae4b521da8309cbfe80ff2d30fa44c7"
+ARG BASE_IMAGE="python:3.13-alpine3.19@sha256:8287ca207e905649e9f399b5f91a119e5e9051d8cd110d5f8c3b4bd9458ebd1d"
 FROM ${BASE_IMAGE} as builder
 
 ARG RIE_VERSION="v1.10"
@@ -10,13 +10,16 @@ RUN apk add --no-cache \
     gcc \
     libc-dev \
     libcurl \
-    libexecinfo-dev \
     libstdc++ \
     libtool \
     make \
     cmake \
     python3-dev \
     wget
+
+# Install libexecinfo-dev from the Alpine v3.16 repository
+RUN apk add --no-cache --update --repository=https://dl-cdn.alpinelinux.org/alpine/v3.16/main/ \
+    libexecinfo-dev    
 
 RUN wget https://github.com/aws/aws-lambda-runtime-interface-emulator/releases/download/${RIE_VERSION}/aws-lambda-rie
 

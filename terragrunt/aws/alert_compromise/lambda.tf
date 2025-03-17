@@ -18,7 +18,7 @@ resource "aws_lambda_function" "broadcast_alert" {
   description                    = "Notify other teams that their API keys have been compromised."
   role                           = aws_iam_role.group_broadcast_alert_role.arn
   handler                        = "broadcast_alert.lambda_handler"
-  runtime                        = "python3.11"
+  runtime                        = "python3.13"
   timeout                        = 60
   reserved_concurrent_executions = 10
 
