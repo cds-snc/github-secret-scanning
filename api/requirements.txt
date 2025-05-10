@@ -1,4 +1,4 @@
-cryptography==44.0.2
+cryptography==44.0.3
 fastapi==0.115.12
 mangum==0.19.0
 python-dotenv==1.1.0
