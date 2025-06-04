@@ -79,8 +79,9 @@ def lambda_handler(event, context):
 
 
 def does_key_contain_all_zeros(key):
-    # Split the key by the delimiter (e.g., '-')
-    parts = key.split('-')[-5:]
+    # Split the key by the delimiter (e.g., '-') but first remove any quotes at the start and end
+    token_value = key.strip("'\"")
+    parts = token_value.split("-")[-5:]
 
-    # Check if all parts that are numeric are zeros
-    return all(part == '0' * len(part) for part in parts if part.isdigit())
+    # Check if all parts are numeric and if they are all zeros
+    return all(part.isdigit() and set(part) == {"0"} for part in parts)
