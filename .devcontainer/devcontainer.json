@@ -1,6 +1,6 @@
 {
 	"name": "GitHub secret scanning",
-	"image": "mcr.microsoft.com/devcontainers/python:3.13@sha256:0f08c317b197f4036bca0514ef0fa52ce5cc9dc47056569c2263272f561aa8c1",
+	"image": "mcr.microsoft.com/devcontainers/python:3.13@sha256:0aa711e570b306c02946cdda67587ce8c65978dbb65691341cbcfd4854dfcfff",
 	"remoteEnv": {
 		"PATH": "/home/vscode/.local/bin:${containerEnv:PATH}", // give our installed Python modules precedence
 		"PYTHONPATH": "./api"
