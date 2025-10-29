@@ -38,12 +38,7 @@ if [ ! -f "$ENV_PATH/.env" ]; then
     if [ ! -d "$ENV_PATH" ]; then
         mkdir "$ENV_PATH"
     fi
-    aws ssm get-parameters \
-        --region ca-central-1 \
-        --with-decryption \
-        --names github-secret-scanning-config \
-        --query 'Parameters[*].Value' \
-        --output text > "$TMP_ENV_FILE"
+    python -c "import boto3; client = boto3.client('ssm'); response = client.get_parameters(Names=['github-secret-scanning-config'], WithDecryption=True); print(response['Parameters'][0]['Value'] if response['Parameters'] else '')" > "$TMP_ENV_FILE"
 fi
 
 # Check if environment vars were retrieved
