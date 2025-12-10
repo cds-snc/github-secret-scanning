@@ -37,6 +37,26 @@ resource "aws_iam_role_policy" "publish_to_sns" {
   })
 }
 
+# IAM Policy for Lambda Function to use KMS keys
+resource "aws_iam_role_policy" "kms_access" {
+  name = "kms_access"
+  role = aws_iam_role.group_broadcast_alert_role.id
+  policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = [
+          "kms:Decrypt",
+          "kms:GenerateDataKey*"
+        ]
+        Effect   = "Allow"
+        Sid      = "AllowKmsAccess"
+        Resource = "arn:aws:kms:${var.region}:${var.account_id}:key/*"
+      }
+    ]
+  })
+}
+
 # IAM Policy for Lambda Function to get SSM Parameters
 resource "aws_iam_role_policy" "ssm_get_parameters_policy" {
   name = "ssm_get_parameters_policy"
