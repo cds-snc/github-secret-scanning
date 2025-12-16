@@ -4,11 +4,11 @@ locals {
 }
 
 module "sentinel_forwarder" {
-  source            = "github.com/cds-snc/terraform-modules//sentinel_forwarder?ref=v10.9.1"
+  source            = "github.com/cds-snc/terraform-modules//sentinel_forwarder?ref=v10.10.2"
   function_name     = "${var.product_name}-sentinel"
   billing_tag_value = var.billing_code
 
-  layer_arn = "arn:aws:lambda:ca-central-1:283582579564:layer:aws-sentinel-connector-layer:125"
+  layer_arn = "arn:aws:lambda:ca-central-1:283582579564:layer:aws-sentinel-connector-layer:242"
 
   customer_id = var.log_analytics_workspace_id
   shared_key  = var.log_analytics_workspace_key
