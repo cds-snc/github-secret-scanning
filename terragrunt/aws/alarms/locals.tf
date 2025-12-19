@@ -11,7 +11,10 @@ locals {
     "dsp-testing",
     "example.com",
     "gcntfy-github-test-revoked",
+    "gcntfy-my_test_key",
+    "gcntfy-test",
     "cds-snc/notification-documentation",
+    "dry-runs-test",
   ]
   secret_detected_metric_pattern = "[(w1=\"*${join("*\" || w1=\"*", local.secret_detected_metric)}*\") && w1!=\"*${join("*\" && w1!=\"*", local.secret_detected_metric_skip)}*\"]"
 }

@@ -29,6 +29,8 @@ def lambda_handler(event, context):
         "dsp-testing",
         "example.com",
         "gcntfy-github-test-revoked",
+        "gcntfy-my_test_key",
+        "gcntfy-test",
         "cds-snc/notification-documentation",
         "dry-runs-test",
     ]
