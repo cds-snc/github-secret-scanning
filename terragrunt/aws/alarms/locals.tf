@@ -15,6 +15,8 @@ locals {
     "gcntfy-test",
     "cds-snc/notification-documentation",
     "dry-runs-test",
+    "00000000-0000-0000-0000-000000000000-00000000-0000-0000-0000-000000000000",
+    "11111111-1111-1111-1111-111111111111-11111111-1111-1111-1111-111111111111",
   ]
   secret_detected_metric_pattern = "[(w1=\"*${join("*\" || w1=\"*", local.secret_detected_metric)}*\") && w1!=\"*${join("*\" && w1!=\"*", local.secret_detected_metric_skip)}*\"]"
 }
