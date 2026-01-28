@@ -60,7 +60,7 @@ def is_valid_signature(key_id: str, signature: str, payload: str) -> bool:
     "Validate the message signature"
 
     if not key_id or not signature or not payload:
-        logger.error(
+        logger.warning(
             "Missing key ID, signature or payload.  Key ID: %s, signature: %s, payload: %s",
             key_id,
             signature,
