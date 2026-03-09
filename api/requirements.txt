@@ -1,7 +1,7 @@
-boto3==1.42.49
+boto3==1.42.59
 cryptography==46.0.5
 fastapi==0.129.0
 mangum==0.21.0
-python-dotenv==1.2.1
+python-dotenv==1.2.2
 requests==2.32.5
 urllib3==2.6.3
