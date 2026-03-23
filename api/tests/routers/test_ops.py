@@ -20,12 +20,9 @@ def test_healthcheck(client):
 def test_security(client):
     response = client.get("/.well-known/security.txt")
     assert response.status_code == status.HTTP_200_OK
-    assert (
-        response.text
-        == """Contact: mailto:security-securite@cds-snc.ca
+    assert response.text == """Contact: mailto:security-securite@cds-snc.ca
 Preferred-Languages: en, fr
 Policy: https://digital.canada.ca/legal/security-notice
 Hiring: https://digital.canada.ca/join-our-team/
 Hiring: https://numerique.canada.ca/rejoindre-notre-equipe/
 """
-    )
