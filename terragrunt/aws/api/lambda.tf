@@ -24,7 +24,3 @@ resource "aws_lambda_function_url" "api" {
   function_name      = module.api.function_name
   authorization_type = "AWS_IAM"
 }
-
-# Note: the aws_lambda_permission resources that grant CloudFront access to invoke
-# this function live in the CloudFront module. They reference the CloudFront
-# distribution ARN, so keeping them there avoids a circular Terragrunt dependency.
