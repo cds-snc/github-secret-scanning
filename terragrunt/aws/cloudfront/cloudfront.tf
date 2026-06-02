@@ -5,8 +5,9 @@ resource "aws_cloudfront_distribution" "api" {
   web_acl_id  = aws_wafv2_web_acl.api.arn
 
   origin {
-    domain_name = split("/", var.api_function_url)[2]
-    origin_id   = var.api_function_name
+    domain_name              = split("/", var.api_function_url)[2]
+    origin_id                = var.api_function_name
+    origin_access_control_id = aws_cloudfront_origin_access_control.secret_scanning.id
 
     custom_origin_config {
       http_port              = 80
@@ -120,4 +121,12 @@ resource "aws_cloudfront_response_headers_policy" "security_headers_api" {
       protection = true
     }
   }
+}
+
+resource "aws_cloudfront_origin_access_control" "secret_scanning" {
+  name                              = var.product_name
+  description                       = "Limit invocation of the Lambda function to the CloudFront distribution"
+  origin_access_control_origin_type = "lambda"
+  signing_behavior                  = "always"
+  signing_protocol                  = "sigv4"
 }

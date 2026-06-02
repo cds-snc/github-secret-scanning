@@ -22,20 +22,9 @@ module "api" {
 
 resource "aws_lambda_function_url" "api" {
   function_name      = module.api.function_name
-  authorization_type = "NONE"
+  authorization_type = "AWS_IAM"
 }
 
-resource "aws_lambda_permission" "api_invoke_function_url" {
-  statement_id           = "AllowInvokeFunctionUrl"
-  action                 = "lambda:InvokeFunctionUrl"
-  function_name          = module.api.function_name
-  function_url_auth_type = "NONE"
-  principal              = "*"
-}
-
-resource "aws_lambda_permission" "api_invoke_function" {
-  statement_id  = "AllowInvokeFunction"
-  action        = "lambda:InvokeFunction"
-  function_name = module.api.function_name
-  principal     = "*"
-}
+# Note: the aws_lambda_permission resources that grant CloudFront access to invoke
+# this function live in the CloudFront module. They reference the CloudFront
+# distribution ARN, so keeping them there avoids a circular Terragrunt dependency.
