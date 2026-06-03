@@ -5,8 +5,8 @@ resource "aws_cloudfront_distribution" "api" {
   web_acl_id  = aws_wafv2_web_acl.api.arn
 
   origin {
-    domain_name              = split("/", var.api_function_url)[2]
-    origin_id                = var.api_function_name
+    domain_name = split("/", var.api_function_url)[2]
+    origin_id   = var.api_function_name
 
     custom_origin_config {
       http_port              = 80
