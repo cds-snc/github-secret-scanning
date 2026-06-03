@@ -6,7 +6,7 @@ resource "aws_lambda_permission" "api_invoke_function_url" {
   statement_id           = "AllowInvokeFunctionUrl"
   action                 = "lambda:InvokeFunctionUrl"
   function_name          = var.api_function_name
-  function_url_auth_type = "AWS_IAM"
+  function_url_auth_type = "NONE"
   principal              = "cloudfront.amazonaws.com"
   source_arn             = aws_cloudfront_distribution.api.arn
 }
