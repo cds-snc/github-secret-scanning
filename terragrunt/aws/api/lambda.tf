@@ -22,5 +22,5 @@ module "api" {
 
 resource "aws_lambda_function_url" "api" {
   function_name      = module.api.function_name
-  authorization_type = "AWS_IAM"
+  authorization_type = "NONE"
 }
