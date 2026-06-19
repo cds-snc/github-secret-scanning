@@ -6,5 +6,6 @@ resource "aws_ssm_parameter" "api_config" {
   tags = {
     CostCentre = var.billing_code
     Terraform  = true
+    ssc_cbrid  = "22DH"
   }
 }

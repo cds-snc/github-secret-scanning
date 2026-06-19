@@ -8,6 +8,7 @@ resource "aws_sns_topic" "cloudwatch_alarm" {
   tags = {
     CostCentre = var.billing_code
     Terraform  = true
+    ssc_cbrid  = "22DH"
   }
 }
 
@@ -31,6 +32,7 @@ resource "aws_kms_key" "sns_cloudwatch" {
   tags = {
     CostCentre = var.billing_code
     Terraform  = true
+    ssc_cbrid  = "22DH"
   }
 }
 

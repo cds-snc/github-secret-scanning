@@ -5,6 +5,7 @@ resource "aws_iam_role" "waf_log_role" {
   tags = {
     CostCentre = var.billing_code
     Terraform  = true
+    ssc_cbrid  = "22DH"
   }
 }
 
@@ -16,6 +17,7 @@ resource "aws_iam_policy" "write_waf_logs" {
   tags = {
     CostCentre = var.billing_code
     Terraform  = true
+    ssc_cbrid  = "22DH"
   }
 }
 
