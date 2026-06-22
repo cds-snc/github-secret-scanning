@@ -8,6 +8,7 @@ resource "aws_wafv2_web_acl" "api" {
   tags = {
     CostCentre = var.billing_code
     Terraform  = true
+    ssc_cbrid  = "22DH"
   }
 
   default_action {
@@ -246,6 +247,7 @@ resource "aws_wafv2_regex_pattern_set" "valid_uri_paths" {
   tags = {
     CostCentre = var.billing_code
     Terraform  = true
+    ssc_cbrid  = "22DH"
   }
 }
 

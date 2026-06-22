@@ -6,5 +6,6 @@ resource "aws_ssm_parameter" "notify_doc_api_key" {
   tags = {
     CostCentre = var.billing_code
     Terraform  = true
+    ssc_cbrid  = "22DH"
   }
 }

@@ -15,6 +15,12 @@ resource "aws_iam_role" "group_broadcast_alert_role" {
       },
     ]
   })
+
+  tags = {
+    CostCentre = var.billing_code
+    Terraform  = true
+    ssc_cbrid  = "22DH"
+  }
 }
 
 # IAM Policy for Lambda Function to publish to SNS

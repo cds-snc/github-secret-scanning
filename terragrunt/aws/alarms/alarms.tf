@@ -25,6 +25,12 @@ resource "aws_cloudwatch_metric_alarm" "api_error" {
 
   alarm_actions = [aws_sns_topic.cloudwatch_alarm.arn]
   ok_actions    = [aws_sns_topic.cloudwatch_alarm.arn]
+
+  tags = {
+    CostCentre = var.billing_code
+    Terraform  = true
+    ssc_cbrid  = "22DH"
+  }
 }
 
 resource "aws_cloudwatch_log_metric_filter" "api_secret_detected" {
@@ -53,4 +59,10 @@ resource "aws_cloudwatch_metric_alarm" "api_secret_detected" {
   treat_missing_data = "notBreaching"
 
   alarm_actions = [aws_sns_topic.cloudwatch_alarm.arn]
+
+  tags = {
+    CostCentre = var.billing_code
+    Terraform  = true
+    ssc_cbrid  = "22DH"
+  }
 }
