@@ -4,4 +4,4 @@ fastapi==0.141.1
 mangum==0.22.0
 python-dotenv==1.2.2
 requests==2.34.2
-urllib3==2.6.3
+urllib3==2.7.0
