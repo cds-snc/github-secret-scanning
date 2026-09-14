@@ -31,6 +31,7 @@ def lambda_handler(event, context):
         "gcntfy-github-test-revoked",
         "gcntfy-my_test_key",
         "gcntfy-test",
+        "gcntfy-alerts_test",
         "cds-snc/notification-documentation",
         "dry-runs-test",
         "00000000-0000-0000-0000-000000000000-00000000-0000-0000-0000-000000000000",
