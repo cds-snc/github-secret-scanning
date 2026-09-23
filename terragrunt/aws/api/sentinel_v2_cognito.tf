@@ -11,9 +11,10 @@
 # The pool has to live in this account: identity pools carry no resource
 # policy, so the one cds-aws-lz built in Log Archive cannot be called from here.
 #
-# This change adds only the pool. The forwarder switches to v2 in a follow-up,
-# once the Azure identity has a federated credential for this pool — switching
-# before that would fail every delivery.
+# The Azure side trusts this pool through federated credential
+# aws-cognito-sre_tools (cds-azure-resources#99). Its subject is the IdentityId
+# ca-central-1:4206d6c3-6cfe-c144-9286-abc2bf60d550, minted with the identity's
+# client id as the developer user identifier — the value the layer sends.
 
 locals {
   # Matches the pool in cds-aws-lz and the jamf forwarder.
