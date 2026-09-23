@@ -27,5 +27,6 @@ resource "aws_cognito_identity_pool" "sentinel_forwarder_v2" {
 
   tags = {
     CostCentre = var.billing_code
+    Terraform  = true
   }
 }
