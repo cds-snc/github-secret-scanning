@@ -4,4 +4,4 @@ flake8==7.3.0
 httpx==0.28.1
 pytest==9.1.1
 pytest-env==1.7.0
-uvicorn==0.52.4
+uvicorn==0.53.0
