@@ -1,3 +1,8 @@
+# NOT USED since the forwarder moved to the Sentinel forwarder hub (sentinel.tf).
+# Kept until the hub path is confirmed delivering, so rollback is a revert;
+# delete this pool, its output, and the Azure credential aws-cognito-sre_tools
+# in a follow-up.
+#
 # The AWS half of the Sentinel forwarder's secretless path to the Logs Ingestion
 # API (DCE/DCR), which replaces the retiring Data Collector API. Nothing is
 # stored — the forwarder's IAM role is the only credential:
