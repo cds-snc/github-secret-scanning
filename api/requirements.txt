@@ -1,6 +1,6 @@
 boto3==1.43.111
 cryptography==50.0.2
-fastapi==0.141.1
+fastapi==0.143.0
 mangum==0.22.0
 python-dotenv==1.2.4
 requests==2.34.2
