@@ -3,5 +3,5 @@ coverage==7.16.2
 flake8==7.4.1
 httpx==0.28.1
 pytest==9.1.1
-pytest-env==1.8.0
+pytest-env==1.8.1
 uvicorn==0.54.0
