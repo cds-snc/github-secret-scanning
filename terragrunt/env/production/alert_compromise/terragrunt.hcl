@@ -17,9 +17,10 @@ dependency "api" {
 }
 
 inputs = {
-  api_function_name     = dependency.api.outputs.function_name
-  notify_doc_api_key  = "test-api-key"
-}  
+  api_function_name  = dependency.api.outputs.function_name
+  notify_doc_api_key = "test-api-key"
+  tsuga_test_api_key = get_env("TF_VAR_tsuga_test_api_key", "test-api-key")
+}
 
 include {
   path = find_in_parent_folders()

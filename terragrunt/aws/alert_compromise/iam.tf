@@ -75,9 +75,12 @@ resource "aws_iam_role_policy" "ssm_get_parameters_policy" {
         Action = [
           "ssm:GetParameters"
         ]
-        Sid      = "AllowSSMGetParameters",
-        Effect   = "Allow",
-        Resource = "arn:aws:ssm:${var.region}:${var.account_id}:parameter/notify_doc_api_key"
+        Sid    = "AllowSSMGetParameters",
+        Effect = "Allow",
+        Resource = [
+          "arn:aws:ssm:${var.region}:${var.account_id}:parameter/notify_doc_api_key",
+          "arn:aws:ssm:${var.region}:${var.account_id}:parameter/tsuga_test_api_key",
+        ]
       }
     ]
   })

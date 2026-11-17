@@ -33,6 +33,7 @@ resource "aws_lambda_function" "broadcast_alert" {
       sns_topic_arn      = "arn:aws:sns:${var.region}:${var.account_id}:${var.sns_topic}"
       subject            = var.subject_message
       notify_doc_api_key = var.notify_doc_api_key
+      tsuga_test_api_key = var.tsuga_test_api_key
     }
   }
   depends_on = [

@@ -36,3 +36,9 @@ variable "notify_doc_api_key" {
   type        = string
   sensitive   = true
 }
+
+variable "tsuga_test_api_key" {
+  description = "The Notify API key to exclude from secret alerts."
+  type        = string
+  sensitive   = true
+}
