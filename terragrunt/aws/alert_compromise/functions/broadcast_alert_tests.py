@@ -177,6 +177,7 @@ def test_lambda_handler_secret_detected_multiple_secrets(
         "Secret detected: token='gcntfy-some-test-key-0a0a0a0-1b1b-2c2c-3d3d-4e4e4e4e4e4e' type='cds_canada_notify_api_key' url='https://github.com/cds-snc/notification-documentation' source='commit'",
         "Secret detected: token='gcntfy-some-test-key-0a0a0a0-1b1b-2c2c-3d3d-4e4e4e4e4e4e' type='cds_canada_notify_api_key' url='https://github.com/cds-snc/notification-documentation' source='commit'",
         "Secret detected: token='gcntfy-github-test-revoked' type='cds_canada_notify_api_key' url='https://example.com/cds-snc/some-repo' source='commit'",
+        "Secret detected: token='gcntfy-safelist-test-key-11111' type='cds_canada_notify_api_key' url='https://github.com/cds-snc/some-repo' source='commit'",
         "Secret detected: token='gcntfy-notify-test-key-0a0a0a0-1b1b-2c2c-3d3d-4e4e4e4e4e4e' type='cds_canada_notify_api_key' url='https://github.com/dry-runs-test/some-repo' source='commit'",
         "Secret detected: token='gcntfy-some-test-key-0000000-0000-0000-0000-000000000000' type='cds_canada_notify_api_key' url='https://whatever.com/cds-snc/some-repo' source='commit'",
     ],
