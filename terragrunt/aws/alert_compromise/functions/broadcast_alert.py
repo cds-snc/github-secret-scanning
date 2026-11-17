@@ -38,11 +38,13 @@ def lambda_handler(event, context):
         "11111111-1111-1111-1111-111111111111-11111111-1111-1111-1111-111111111111",
     ]
 
-    # get the notify_api_key from the environment variable
+    # Get keys to ignore from environment variables.
     notify_doc_api_key = os.environ["notify_doc_api_key"]
+    tsuga_test_api_key = os.environ["tsuga_test_api_key"]
 
-    # Add the notify_api_key to the ignore_terms list
+    # Add configured keys to the ignore_terms list.
     ignore_terms.append(notify_doc_api_key)
+    ignore_terms.append(tsuga_test_api_key)
 
     print("Starting...")
 

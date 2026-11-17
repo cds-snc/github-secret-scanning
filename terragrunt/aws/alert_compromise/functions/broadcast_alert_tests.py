@@ -13,6 +13,7 @@ from broadcast_alert import lambda_handler, does_key_contain_all_zeros
         "sns_topic_arn": "fake_topic_arn",
         "subject": "Fake Subject",
         "notify_doc_api_key": "gcntfy-notify-test-key-11111",
+        "tsuga_test_api_key": "gcntfy-safelist-test-key-11111",
     },
 )
 def test_lambda_handler_secret_detected(
@@ -46,6 +47,7 @@ def test_lambda_handler_secret_detected(
         "sns_topic_arn": "fake_topic_arn",
         "subject": "Fake Subject",
         "notify_doc_api_key": "gcntfy-notify-test-key-11111",
+        "tsuga_test_api_key": "gcntfy-safelist-test-key-11111",
     },
 )
 def test_lambda_handler_secret_detected_all_zeros(
@@ -74,6 +76,7 @@ def test_lambda_handler_secret_detected_all_zeros(
         "sns_topic_arn": "fake_topic_arn",
         "subject": "Fake Subject",
         "notify_doc_api_key": "gcntfy-notify-test-key-11111",
+        "tsuga_test_api_key": "gcntfy-safelist-test-key-11111",
     },
 )
 @pytest.mark.parametrize(
@@ -167,6 +170,7 @@ def test_lambda_handler_secret_detected_multiple_secrets(
         "sns_topic_arn": "fake_topic_arn",
         "subject": "Fake Subject",
         "notify_doc_api_key": "gcntfy-notify-test-key-11111",
+        "tsuga_test_api_key": "gcntfy-safelist-test-key-11111",
     },
 )
 @pytest.mark.parametrize(
