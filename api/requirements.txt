@@ -1,4 +1,4 @@
-boto3==1.44.1
+boto3==1.44.9
 cryptography==50.0.2
 fastapi==0.162.4
 mangum==0.22.0
